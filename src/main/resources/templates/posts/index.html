@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
 </head>
 <body>
-
+    <h1>Here are the posts...</h1>
+    <ul>
+        <li th:each="post : ${posts}">
+            <h3><span th:text="${post.getTitle()}"></span></h3>
+            <p><span th:text="${post.getBody()}"></span></p>
+        </li>
+    </ul>
 </body>
 </html>
