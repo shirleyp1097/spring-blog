@@ -1,15 +1,25 @@
 package com.codeup.springblog.controllers;
 
+import com.codeup.springblog.controllers.repositories.AdRepository;
+import com.codeup.springblog.models.Ad;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class AdController {
 
+    private final AdRepository adRepository;
+
+    public AdController(AdRepository adRepository) {
+        this.adRepository = adRepository;
+    }
+
     @GetMapping("/ads")
     @ResponseBody
-    public String showAds() {
-        return "Showing all ads";
+    public List<Ad> showAds() {
+        return adRepository.findAll();
     }
 
     @GetMapping("/ads/{id}")
@@ -20,8 +30,9 @@ public class AdController {
 
     @PostMapping("/ads")
     @ResponseBody
-    public String createAds() {
-        return "Creating an ad";
+    public String createAd(@RequestBody Ad newAd) {
+        adRepository.save(newAd);
+        return String.format("Ad created with id of: %s", newAd.getId());
     }
 
     @GetMapping("/name")

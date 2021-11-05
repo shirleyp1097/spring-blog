@@ -1,5 +1,6 @@
 package com.codeup.springblog.controllers;
 
+import com.codeup.springblog.controllers.repositories.PostRepository;
 import com.codeup.springblog.models.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +14,16 @@ import java.util.ArrayList;
 @Controller
 public class PostController {
 
+//    injecting a dependency
+    private PostRepository postsDao;
+    public PostController(PostRepository postsDao) {
+        this.postsDao = postsDao;
+    }
+
+
     @GetMapping("/posts")
     public String showPosts(Model model) {
-        ArrayList<Post> posts = new ArrayList<>();
-        Post postOne = new Post("Why are millenials such dummies?", "idk");
-        Post postTwo = new Post("If a tree falls in forest...", "man who cares?");
-        posts.add(postOne);
-        posts.add(postTwo);
-        model.addAttribute("posts", posts);
+
         return "/posts/index";
     }
 
