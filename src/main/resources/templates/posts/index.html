@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+    </style>
 </head>
 <body>
     <h1>Here are the posts...</h1>
     <ul>
         <li th:each="post : ${posts}">
-            <h3><span th:text="${post.getTitle()}"></span></h3>
+            <h3>Title: <span th:text="${post.getTitle()}"></span></h3>
             <p><span th:text="${post.getBody()}"></span></p>
+            <a th:href="@{'posts/' + ${post.id} + '/edit'}">Edit Post</a>
         </li>
     </ul>
 </body>
