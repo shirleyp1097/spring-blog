@@ -5,16 +5,44 @@
     <title>Create Post</title>
 </head>
 <body>
-  <form th:method="post">
+  <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
     <div>
       <label for="title">Title</label>
-      <input id="title" name="title">
+      <br>
+      <input id="title" th:field="*{title}">
     </div>
     <div>
       <label for="body">Body</label>
-      <textarea id="body" name="body"></textarea>
+      <br>
+      <textarea id="body" th:field="*{body}"></textarea>
     </div>
     <button>Create Post</button>
   </form>
 </body>
 </html>
+
+
+
+<!--PRE-EXISTING VERSION BEFORE FORM MODEL BINDING EXERCISE-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Create Post</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form th:method="post">-->
+<!--  <div>-->
+<!--    <label for="title">Title</label>-->
+<!--    <br>-->
+<!--    <input id="title" name="title">-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label for="body">Body</label>-->
+<!--    <br>-->
+<!--    <textarea id="body" name="body"></textarea>-->
+<!--  </div>-->
+<!--  <button>Create Post</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->

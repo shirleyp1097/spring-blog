@@ -35,14 +35,22 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    public String viewCreatePost() {
+    public String viewCreatePost(Model model) {
+        model.addAttribute("post", new Post());
         return "/posts/create";
     }
 
+//    PRE-EXISTING CODE BEFORE FORM BINDING EXERCISE
+//    @PostMapping("/posts/create")
+//    public String createPost(@RequestParam String title, @RequestParam String body, Model model) {
+//        User user = usersDao.getById(1L);
+//        Post post = new Post(title, body, user);
+//        postsDao.save(post);
+//        return "redirect:/posts";
+//    }
+
     @PostMapping("/posts/create")
-    public String createPost(@RequestParam String title, @RequestParam String body, Model model) {
-        User user = usersDao.getById(1L);
-        Post post = new Post(title, body, user);
+    public String createPost(@ModelAttribute Post post) {
         postsDao.save(post);
         return "redirect:/posts";
     }
