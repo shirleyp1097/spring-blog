@@ -57,3 +57,5 @@ USE spring_blog_db;
 # insert into posts (title, body) values ('Free Samples', 'Comedy|Drama');
 
 TRUNCATE posts;
+
+UPDATE users SET email = "shirleyp1097@gmail.com" WHERE id = 1;
