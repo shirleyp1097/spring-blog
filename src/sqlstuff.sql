@@ -59,3 +59,8 @@ USE spring_blog_db;
 TRUNCATE posts;
 
 UPDATE users SET email = "shirleyp1097@gmail.com" WHERE id = 1;
+
+CREATE DATABASE IF NOT EXISTS draco_spring_blog_db;
+USE draco_spring_blog_db;
+CREATE TABLE users;
+CREATE TABLE posts;

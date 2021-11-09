@@ -10,6 +10,7 @@
     </style>
 </head>
 <body>
+    <nav th:insert="partials/navbar.html"></nav>
     <h1>Here are the posts...</h1>
     <ul>
         <li th:each="post : ${posts}">
