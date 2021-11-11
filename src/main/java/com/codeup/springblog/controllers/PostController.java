@@ -48,7 +48,8 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = usersDao.getById(principal.getId());
         post.setUser(user);
         postsDao.save(post);
         emailService.prepareAndSend(post, post.getTitle(), post.getBody());
